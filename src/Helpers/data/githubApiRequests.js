@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getGithubProfile = () => axios.get('https://developer.github.com/v3/users/jsmwltrs');
+const getGithubProfile = () => axios.get('https://api.github.com/users/jsmnwltrs');
 
 
 export default {
