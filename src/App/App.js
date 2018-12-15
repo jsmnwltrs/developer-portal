@@ -7,6 +7,7 @@ import Auth from '../components/Auth/Auth';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import connection from '../Helpers/data/connection';
 import authRequests from '../Helpers/data/authRequests';
+import githubApiRequests from '../Helpers/data/githubApiRequests';
 
 class App extends Component {
   state = {
@@ -15,6 +16,14 @@ class App extends Component {
 
   componentDidMount() {
     connection();
+    githubApiRequests.getGithubProfile()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({
