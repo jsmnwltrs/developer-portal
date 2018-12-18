@@ -14,6 +14,7 @@ class App extends Component {
   state = {
     authed: false,
     github_username: '',
+    podcast: [],
   };
 
   componentDidMount() {
@@ -68,7 +69,6 @@ class App extends Component {
     return (
       <div className="App">
       <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent}/>
-      <p>You logged in</p>
       <TabList />
     </div>
     );

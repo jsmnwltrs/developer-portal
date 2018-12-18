@@ -5,12 +5,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
-  Row,
-  Col,
 } from 'reactstrap';
 import classnames from 'classnames';
 import './TabList.scss';
@@ -72,16 +66,16 @@ class TabList extends Component {
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
-                <h4>Tutorials Contents</h4>
+            <h4>You currently have no tutorials.</h4>
           </TabPane>
           <TabPane tabId="2">
-            <h4>Resource Contents</h4>
+            <h4>You currently have no resources.</h4>
           </TabPane>
           <TabPane tabId="3">
-            <h4>Blog Contents</h4>
+            <h4>You currently have no blogs.</h4>
           </TabPane>
           <TabPane tabId="4">
-            <h4>Podcasts Contents</h4>
+            <h4>You currently have no podcasts.</h4>
           </TabPane>
         </TabContent>
       </div>
