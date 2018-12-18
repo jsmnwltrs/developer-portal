@@ -5,6 +5,7 @@ import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Auth from '../components/Auth/Auth';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
+import TabList from '../components/TabList/TabList';
 import connection from '../Helpers/data/connection';
 import authRequests from '../Helpers/data/authRequests';
 import githubApiRequests from '../Helpers/data/githubApiRequests';
@@ -12,23 +13,25 @@ import githubApiRequests from '../Helpers/data/githubApiRequests';
 class App extends Component {
   state = {
     authed: false,
+    github_username: '',
   };
 
   componentDidMount() {
     connection();
-    githubApiRequests.getGithubProfile()
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
 
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({
           authed: true,
         });
+        const githubUser = this.state.github_username;
+        githubApiRequests.getGithubProfile(githubUser)
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       } else {
         this.setState({
           authed: false,
@@ -41,16 +44,17 @@ class App extends Component {
     this.removeListener();
   }
 
-  isAuthenticated = () => {
+  isAuthenticated = (username) => {
     this.setState({
       authed: true,
+      github_username: username,
     });
   }
 
   render() {
     const logoutClickEvent = () => {
       authRequests.logoutUser();
-      this.setState({ authed: false });
+      this.setState({ authed: false, github_username: '' });
     };
 
     if (!this.state.authed) {
@@ -65,6 +69,7 @@ class App extends Component {
       <div className="App">
       <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent}/>
       <p>You logged in</p>
+      <TabList />
     </div>
     );
   }
