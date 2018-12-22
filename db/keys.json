@@ -1,0 +1,14 @@
+{
+  "tutorials": {
+    "sample": "data"
+  },
+  "resources": {
+    "sample": "data"
+  },
+  "blogs": {
+    "sample": "data"
+  },
+  "podcasts": {
+    "sample": "data"
+  }
+}

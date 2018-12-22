@@ -5,8 +5,9 @@ import authRequests from '../../Helpers/data/authRequests';
 class Auth extends React.Component {
   authenticateUser = (e) => {
     e.preventDefault();
-    authRequests.authenticate().then(() => {
-      this.props.isAuthenticated();
+    authRequests.authenticate().then((result) => {
+      const user = result.additionalUserInfo.username;
+      this.props.isAuthenticated(user);
     }).catch(error => console.error('error with auth', error));
   }
 

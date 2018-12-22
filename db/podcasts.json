@@ -1,0 +1,22 @@
+{
+  "podcast0": {
+    "name": "Syntax",
+    "url": "https://syntax.fm/",
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+  },
+  "podcast1": {
+    "name": "Full Stack Radio",
+    "url": "http://www.fullstackradio.com/",
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+  },
+  "podcast2": {
+    "name": "JS Party",
+    "url": "https://changelog.com/jsparty",
+    "uid": "123"
+  },
+  "podcast3": {
+    "name": "Jamstack Radio",
+    "url": "https://www.heavybit.com/library/podcasts/jamstack-radio/",
+    "uid": "123"
+  }
+}
