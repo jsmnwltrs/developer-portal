@@ -1,0 +1,22 @@
+{
+  "resource0": {
+    "name": "webpack",
+    "url": "https://webpack.js.org/",
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+  },
+  "resource1": {
+    "name": "reactstrap",
+    "url": "https://reactstrap.github.io/",
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+  },
+  "resource2": {
+    "name": "bootstrap",
+    "url": "https://getbootstrap.com/",
+    "uid": "123"
+  },
+  "resource3": {
+    "name": "jquery cheat sheet",
+    "url": "https://oscarotero.com/jquery/",
+    "uid": "123"
+  }
+}

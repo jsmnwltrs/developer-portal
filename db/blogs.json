@@ -1,0 +1,22 @@
+{
+  "blog0": {
+    "name": "David Walsh",
+    "url": "https://davidwalsh.name",
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+  },
+  "blog1": {
+    "name": "sitepoint",
+    "url": "https://www.sitepoint.com/javascript/",
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+  },
+  "blog2": {
+    "name": "javascript playground",
+    "url": "https://javascriptplayground.com/",
+    "uid": "123"
+  },
+  "blog3": {
+    "name": "superhero js",
+    "url": "http://superherojs.com/",
+    "uid": "123"
+  }
+}
