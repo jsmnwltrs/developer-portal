@@ -77,6 +77,28 @@ class App extends Component {
     });
   }
 
+  deleteTabItem = (tabId, tabType) => {
+    const uid = authRequests.getCurrentUid();
+    tabDataRequests.deleteRequest(tabId, tabType)
+      .then(() => {
+        tabDataRequests.getRequest(uid, tabType)
+          .then((tabItems) => {
+            if (tabType === 'tutorials') {
+              this.setState({ tutorials: tabItems });
+            } else if (tabType === 'podcasts') {
+              this.setState({ podcasts: tabItems });
+            } else if (tabType === 'blogs') {
+              this.setState({ blogs: tabItems });
+            } else if (tabType === 'resources') {
+              this.setState({ resources: tabItems });
+            }
+          });
+      })
+      .catch((error) => {
+        console.error('error on formSubmitEvent', error);
+      });
+  }
+
   formSubmitEvent = (newTabItem, tabType) => {
     if (tabType !== '') {
       const uid = authRequests.getCurrentUid();
@@ -129,7 +151,13 @@ class App extends Component {
       <div className="App">
       <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}/>
       <TabForm onSubmit={this.formSubmitEvent} />
-      <TabList tutorials={tutorials} podcasts={podcasts} blogs={blogs} resources={resources}/>
+      <TabList
+        tutorials={tutorials}
+        podcasts={podcasts}
+        blogs={blogs}
+        resources={resources}
+        deleteTabItem={this.deleteTabItem}
+      />
     </div>
     );
   }

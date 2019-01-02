@@ -1,19 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import tabDataShape from '../../Helpers/props/tabDataShape';
 import './ResourceItem.scss';
 
 class ResourceItem extends React.Component {
   static propTypes = {
     resource: tabDataShape,
+    deleteTabItem: PropTypes.func,
+  }
+
+  deleteEvent = (e) => {
+    e.preventDefault();
+    const { deleteTabItem, resource } = this.props;
+    deleteTabItem(resource.id, 'resources');
   }
 
   render() {
     const { resource } = this.props;
     return (
-      <li className="resource-item">
+      <div>
         <span>{resource.name}</span>
         <span><a href={resource.url}>Link</a></span>
-      </li>
+        <span className="col">
+          <button className="btn btn-dark" onClick={this.editEvent}><i className="far fa-edit"/></button>
+        </span>
+        <span className="col">
+          <button className="btn btn-dark" onClick={this.deleteEvent}><i className="far fa-trash-alt"/></button>
+        </span>
+      </div>
     );
   }
 }

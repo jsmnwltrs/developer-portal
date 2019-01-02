@@ -22,7 +22,10 @@ const getRequest = (uid, tabType) => new Promise((resolve, reject) => {
 
 const postRequest = (tabItem, tabType) => axios.post(`${firebaseUrl}/${tabType}.json`, tabItem);
 
+const deleteRequest = (tabId, tabType) => axios.delete(`${firebaseUrl}/${tabType}/${tabId}.json`);
+
 export default {
   getRequest,
   postRequest,
+  deleteRequest,
 };
