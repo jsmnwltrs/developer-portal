@@ -10,6 +10,7 @@ import connection from '../Helpers/data/connection';
 import authRequests from '../Helpers/data/authRequests';
 import githubApiRequests from '../Helpers/data/githubApiRequests';
 import tabDataRequests from '../Helpers/data/tabDataRequests';
+import TabForm from '../components/Form/Form';
 
 class App extends Component {
   state = {
@@ -30,8 +31,7 @@ class App extends Component {
         });
         const githubUser = this.state.github_username;
         githubApiRequests.getGithubProfile(githubUser)
-          .then((result) => {
-            console.log(result);
+          .then(() => {
           })
           .catch((error) => {
             console.error(error);
@@ -39,36 +39,24 @@ class App extends Component {
 
         const currentUser = authRequests.getCurrentUid();
 
-        tabDataRequests.getTutorials(currentUser)
+        tabDataRequests.getRequest(currentUser, 'tutorials')
           .then((tutorials) => {
             this.setState({ tutorials });
-          })
-          .catch((error) => {
-            console.error('error on getTutorials', error);
           });
 
-        tabDataRequests.getResources(currentUser)
-          .then((resources) => {
-            this.setState({ resources });
-          })
-          .catch((error) => {
-            console.error('error on getResources', error);
-          });
-
-        tabDataRequests.getBlogs(currentUser)
-          .then((blogs) => {
-            this.setState({ blogs });
-          })
-          .catch((error) => {
-            console.error('error on getBlogs', error);
-          });
-
-        tabDataRequests.getPodcasts(currentUser)
+        tabDataRequests.getRequest(currentUser, 'podcasts')
           .then((podcasts) => {
             this.setState({ podcasts });
-          })
-          .catch((error) => {
-            console.error('error on getPodcasts', error);
+          });
+
+        tabDataRequests.getRequest(currentUser, 'blogs')
+          .then((blogs) => {
+            this.setState({ blogs });
+          });
+
+        tabDataRequests.getRequest(currentUser, 'resources')
+          .then((resources) => {
+            this.setState({ resources });
           });
       } else {
         this.setState({
@@ -87,6 +75,32 @@ class App extends Component {
       authed: true,
       github_username: username,
     });
+  }
+
+  formSubmitEvent = (newTabItem, tabType) => {
+    if (tabType !== '') {
+      const uid = authRequests.getCurrentUid();
+      tabDataRequests.postRequest(newTabItem, tabType)
+        .then(() => {
+          tabDataRequests.getRequest(uid, tabType)
+            .then((tabItems) => {
+              if (tabType === 'tutorials') {
+                this.setState({ tutorials: tabItems });
+              } else if (tabType === 'podcasts') {
+                this.setState({ podcasts: tabItems });
+              } else if (tabType === 'blogs') {
+                this.setState({ blogs: tabItems });
+              } else if (tabType === 'resources') {
+                this.setState({ resources: tabItems });
+              }
+            });
+        })
+        .catch((error) => {
+          console.error('error on formSubmitEvent', error);
+        });
+    } else {
+      alert('no tab type has been selected');
+    }
   }
 
   render() {
@@ -114,6 +128,7 @@ class App extends Component {
     return (
       <div className="App">
       <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}/>
+      <TabForm onSubmit={this.formSubmitEvent} />
       <TabList tutorials={tutorials} podcasts={podcasts} blogs={blogs} resources={resources}/>
     </div>
     );
