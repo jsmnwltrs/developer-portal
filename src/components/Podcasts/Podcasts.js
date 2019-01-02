@@ -7,14 +7,16 @@ import PodcastItem from '../PodcastItem/PodcastItem';
 class Podcasts extends React.Component {
   static propType = {
     podcasts: PropTypes.arrayOf(tabDataShape),
+    deleteTabItem: PropTypes.func,
   }
 
   render() {
-    const { podcasts } = this.props;
+    const { podcasts, deleteTabItem } = this.props;
     const podcastsItemComponents = podcasts.map(podcast => (
       <PodcastItem
         podcast={podcast}
         key={podcast.id}
+        deleteTabItem={deleteTabItem}
       />
     ));
     return (

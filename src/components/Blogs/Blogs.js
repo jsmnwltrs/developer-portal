@@ -7,14 +7,16 @@ import BlogItem from '../BlogItem/BlogItem';
 class Blogs extends React.Component {
   static propType = {
     blogs: PropTypes.arrayOf(tabDataShape),
+    deleteTabItem: PropTypes.func,
   }
 
   render() {
-    const { blogs } = this.props;
+    const { blogs, deleteTabItem } = this.props;
     const blogsItemComponents = blogs.map(blog => (
       <BlogItem
         blog={blog}
         key={blog.id}
+        deleteTabItem={deleteTabItem}
       />
     ));
     return (

@@ -1,19 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import tabDataShape from '../../Helpers/props/tabDataShape';
 import './TutorialItem.scss';
 
 class TutorialItem extends React.Component {
   static propTypes = {
     tutorial: tabDataShape,
+    deleteTabItem: PropTypes.func,
   }
+
+  deleteEvent = (e) => {
+    e.preventDefault();
+    const { deleteTabItem, tutorial } = this.props;
+    deleteTabItem(tutorial.id, 'tutorials');
+  }
+
 
   render() {
     const { tutorial } = this.props;
     return (
-      <li className="tutorial-item">
+      <div>
         <span>{tutorial.name}</span>
         <span><a href={tutorial.url}>Link</a></span>
-      </li>
+        <span className="col">
+          <button className="btn btn-dark" onClick={this.editEvent}><i className="far fa-edit"/></button>
+        </span>
+        <span className="col">
+          <button className="btn btn-dark" onClick={this.deleteEvent}><i className="far fa-trash-alt"/></button>
+        </span>
+      </div>
     );
   }
 }

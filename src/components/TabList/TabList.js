@@ -21,6 +21,7 @@ class TabList extends Component {
     resources: PropTypes.arrayOf(tabDataShape),
     blogs: PropTypes.arrayOf(tabDataShape),
     podcasts: PropTypes.arrayOf(tabDataShape),
+    deleteTabItem: PropTypes.func,
   }
 
   constructor(props) {
@@ -46,6 +47,7 @@ class TabList extends Component {
       podcasts,
       blogs,
       resources,
+      deleteTabItem,
     } = this.props;
     return (
       <div>
@@ -86,19 +88,19 @@ class TabList extends Component {
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
           <h2>Tutorials</h2>
-            <Tutorials tutorials={tutorials}/>
+            <Tutorials tutorials={tutorials} deleteTabItem={deleteTabItem} />
           </TabPane>
           <TabPane tabId="2">
           <h2>Resources</h2>
-            <Resources resources={resources}/>
+            <Resources resources={resources} deleteTabItem={deleteTabItem} />
           </TabPane>
           <TabPane tabId="3">
           <h2>Blogs</h2>
-            <Blogs blogs={blogs}/>
+            <Blogs blogs={blogs} deleteTabItem={deleteTabItem} />
           </TabPane>
           <TabPane tabId="4">
           <h2>Podcasts</h2>
-            <Podcasts podcasts={podcasts}/>
+            <Podcasts podcasts={podcasts} deleteTabItem={deleteTabItem} />
           </TabPane>
         </TabContent>
       </div>
