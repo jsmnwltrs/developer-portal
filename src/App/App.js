@@ -105,7 +105,7 @@ class App extends Component {
   formSubmitEvent = (newTabItem, tabType) => {
     const uid = authRequests.getCurrentUid();
     const { isEditing, editId } = this.state;
-    if (isEditing) {
+    if (isEditing && tabType !== '') {
       tabDataRequests.putRequest(editId, tabType, newTabItem)
         .then(() => {
           tabDataRequests.getRequest(uid, tabType)

@@ -19,7 +19,7 @@ class BlogItem extends React.Component {
   editEvent = (e) => {
     e.preventDefault();
     const { passTabItemToEdit, blog } = this.props;
-    passTabItemToEdit(blog.id);
+    passTabItemToEdit(blog.id, 'blogs');
   }
 
   render() {

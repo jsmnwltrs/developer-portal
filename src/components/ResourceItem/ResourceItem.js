@@ -19,7 +19,7 @@ class ResourceItem extends React.Component {
   editEvent = (e) => {
     e.preventDefault();
     const { passTabItemToEdit, resource } = this.props;
-    passTabItemToEdit(resource.id);
+    passTabItemToEdit(resource.id, 'resources');
   }
 
   render() {

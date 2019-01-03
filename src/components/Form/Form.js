@@ -22,6 +22,7 @@ class TabForm extends React.Component {
     onSubmit: PropTypes.func,
     isEditing: PropTypes.bool,
     editId: PropTypes.string,
+    tabType: PropTypes.string,
   }
 
   state = {
@@ -58,13 +59,11 @@ class TabForm extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isEditing, editId } = this.props;
-    const { tabType } = this.state;
+    const { isEditing, editId, tabType } = this.props;
     if (prevProps !== this.props && isEditing) {
       tabDataRequests.getSingleTabItem(editId, tabType)
         .then((tabItem) => {
           this.setState({ newTabItem: tabItem.data });
-          console.log(tabItem);
         })
         .catch((error) => {
           console.error('error on componentDidUpdate', error);

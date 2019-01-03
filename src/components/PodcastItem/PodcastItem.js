@@ -19,7 +19,7 @@ class PodcastItem extends React.Component {
   editEvent = (e) => {
     e.preventDefault();
     const { passTabItemToEdit, podcast } = this.props;
-    passTabItemToEdit(podcast.id);
+    passTabItemToEdit(podcast.id, 'podcasts');
   }
 
 
