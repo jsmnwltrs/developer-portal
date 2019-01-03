@@ -7,12 +7,19 @@ class TutorialItem extends React.Component {
   static propTypes = {
     tutorial: tabDataShape,
     deleteTabItem: PropTypes.func,
+    passTabItemToEdit: PropTypes.func,
   }
 
   deleteEvent = (e) => {
     e.preventDefault();
     const { deleteTabItem, tutorial } = this.props;
     deleteTabItem(tutorial.id, 'tutorials');
+  }
+
+  editEvent = (e) => {
+    e.preventDefault();
+    const { passTabItemToEdit, tutorial } = this.props;
+    passTabItemToEdit(tutorial.id, 'tutorials');
   }
 
 

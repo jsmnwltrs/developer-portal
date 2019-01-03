@@ -8,15 +8,17 @@ class Resources extends React.Component {
   static propType = {
     resources: PropTypes.arrayOf(tabDataShape),
     deleteTabItem: PropTypes.func,
+    passTabItemToEdit: PropTypes.func,
   }
 
   render() {
-    const { resources, deleteTabItem } = this.props;
+    const { resources, deleteTabItem, passTabItemToEdit } = this.props;
     const resourcesItemComponents = resources.map(resource => (
       <ResourceItem
         resource={resource}
         key={resource.id}
         deleteTabItem={deleteTabItem}
+        passTabItemToEdit={passTabItemToEdit}
       />
     ));
     return (

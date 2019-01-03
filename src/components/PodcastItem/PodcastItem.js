@@ -7,6 +7,7 @@ class PodcastItem extends React.Component {
   static propTypes = {
     podcast: tabDataShape,
     deleteTabItem: PropTypes.func,
+    passTabItemToEdit: PropTypes.func,
   }
 
   deleteEvent = (e) => {
@@ -14,6 +15,13 @@ class PodcastItem extends React.Component {
     const { deleteTabItem, podcast } = this.props;
     deleteTabItem(podcast.id, 'podcasts');
   }
+
+  editEvent = (e) => {
+    e.preventDefault();
+    const { passTabItemToEdit, podcast } = this.props;
+    passTabItemToEdit(podcast.id);
+  }
+
 
   render() {
     const { podcast } = this.props;

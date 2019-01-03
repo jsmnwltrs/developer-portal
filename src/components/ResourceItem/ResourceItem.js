@@ -7,12 +7,19 @@ class ResourceItem extends React.Component {
   static propTypes = {
     resource: tabDataShape,
     deleteTabItem: PropTypes.func,
+    passTabItemToEdit: PropTypes.func,
   }
 
   deleteEvent = (e) => {
     e.preventDefault();
     const { deleteTabItem, resource } = this.props;
     deleteTabItem(resource.id, 'resources');
+  }
+
+  editEvent = (e) => {
+    e.preventDefault();
+    const { passTabItemToEdit, resource } = this.props;
+    passTabItemToEdit(resource.id);
   }
 
   render() {

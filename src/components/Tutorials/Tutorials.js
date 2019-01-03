@@ -8,15 +8,17 @@ class Turtorials extends React.Component {
   static propType = {
     tutorials: PropTypes.arrayOf(tabDataShape),
     deleteTabItem: PropTypes.func,
+    passTabItemToEdit: PropTypes.func,
   }
 
   render() {
-    const { tutorials, deleteTabItem } = this.props;
+    const { tutorials, deleteTabItem, passTabItemToEdit } = this.props;
     const tutorialsItemComponents = tutorials.map(tutorial => (
       <TutorialItem
         tutorial={tutorial}
         key={tutorial.id}
         deleteTabItem={deleteTabItem}
+        passTabItemToEdit={passTabItemToEdit}
       />
     ));
     return (
