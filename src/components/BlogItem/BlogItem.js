@@ -7,12 +7,19 @@ class BlogItem extends React.Component {
   static propTypes = {
     blog: tabDataShape,
     deleteTabItem: PropTypes.func,
+    passTabItemToEdit: PropTypes.func,
   }
 
   deleteEvent = (e) => {
     e.preventDefault();
     const { deleteTabItem, blog } = this.props;
     deleteTabItem(blog.id, 'blogs');
+  }
+
+  editEvent = (e) => {
+    e.preventDefault();
+    const { passTabItemToEdit, blog } = this.props;
+    passTabItemToEdit(blog.id, 'blogs');
   }
 
   render() {

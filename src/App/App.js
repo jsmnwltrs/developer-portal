@@ -20,6 +20,9 @@ class App extends Component {
     podcasts: [],
     resources: [],
     blogs: [],
+    isEditing: false,
+    editId: '-1',
+    tabType: '',
   };
 
   componentDidMount() {
@@ -100,8 +103,28 @@ class App extends Component {
   }
 
   formSubmitEvent = (newTabItem, tabType) => {
-    if (tabType !== '') {
-      const uid = authRequests.getCurrentUid();
+    const uid = authRequests.getCurrentUid();
+    const { isEditing, editId } = this.state;
+    if (isEditing && tabType !== '') {
+      tabDataRequests.putRequest(editId, tabType, newTabItem)
+        .then(() => {
+          tabDataRequests.getRequest(uid, tabType)
+            .then((tabItems) => {
+              if (tabType === 'tutorials') {
+                this.setState({ tutorials: tabItems });
+              } else if (tabType === 'podcasts') {
+                this.setState({ podcasts: tabItems });
+              } else if (tabType === 'blogs') {
+                this.setState({ blogs: tabItems });
+              } else if (tabType === 'resources') {
+                this.setState({ resources: tabItems });
+              }
+            });
+        })
+        .catch((error) => {
+          console.error('error on formSubmitEvent', error);
+        });
+    } else if (tabType !== '') {
       tabDataRequests.postRequest(newTabItem, tabType)
         .then(() => {
           tabDataRequests.getRequest(uid, tabType)
@@ -125,6 +148,10 @@ class App extends Component {
     }
   }
 
+  passTabItemToEdit = (tabId, tabType) => {
+    this.setState({ isEditing: true, editId: tabId, tabType });
+  }
+
   render() {
     const {
       authed,
@@ -132,6 +159,9 @@ class App extends Component {
       tutorials,
       blogs,
       resources,
+      editId,
+      isEditing,
+      tabType,
     } = this.state;
 
     const logoutClickEvent = () => {
@@ -150,13 +180,19 @@ class App extends Component {
     return (
       <div className="App">
       <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}/>
-      <TabForm onSubmit={this.formSubmitEvent} />
+      <TabForm
+        onSubmit={this.formSubmitEvent}
+        isEditing={isEditing}
+        editId={editId}
+        tabType={tabType}
+      />
       <TabList
         tutorials={tutorials}
         podcasts={podcasts}
         blogs={blogs}
         resources={resources}
         deleteTabItem={this.deleteTabItem}
+        passTabItemToEdit={this.passTabItemToEdit}
       />
     </div>
     );

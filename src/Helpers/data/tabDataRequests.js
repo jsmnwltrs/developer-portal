@@ -24,8 +24,14 @@ const postRequest = (tabItem, tabType) => axios.post(`${firebaseUrl}/${tabType}.
 
 const deleteRequest = (tabId, tabType) => axios.delete(`${firebaseUrl}/${tabType}/${tabId}.json`);
 
+const getSingleTabItem = (tabId, tabType) => axios.get(`${firebaseUrl}/${tabType}/${tabId}.json`);
+
+const putRequest = (tabId, tabType, newTabItem) => axios.put(`${firebaseUrl}/${tabType}/${tabId}.json`, newTabItem);
+
 export default {
   getRequest,
   postRequest,
   deleteRequest,
+  getSingleTabItem,
+  putRequest,
 };

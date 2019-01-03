@@ -9,6 +9,7 @@ import {
   Input,
 } from 'reactstrap';
 import authRequests from '../../Helpers/data/authRequests';
+import tabDataRequests from '../../Helpers/data/tabDataRequests';
 
 const defaultTabItem = {
   name: '',
@@ -19,6 +20,9 @@ const defaultTabItem = {
 class TabForm extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func,
+    isEditing: PropTypes.bool,
+    editId: PropTypes.string,
+    tabType: PropTypes.string,
   }
 
   state = {
@@ -34,7 +38,6 @@ class TabForm extends React.Component {
   }
 
   setTabTypeState = (e) => {
-    e.preventDefault();
     const newTabType = e.target.value;
     this.setState({ tabType: newTabType });
   };
@@ -53,6 +56,19 @@ class TabForm extends React.Component {
     myTabItem.uid = authRequests.getCurrentUid();
     onSubmit(myTabItem, tabType);
     this.setState({ newTabItem: defaultTabItem, tabType: '' });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isEditing, editId, tabType } = this.props;
+    if (prevProps !== this.props && isEditing) {
+      tabDataRequests.getSingleTabItem(editId, tabType)
+        .then((tabItem) => {
+          this.setState({ newTabItem: tabItem.data });
+        })
+        .catch((error) => {
+          console.error('error on componentDidUpdate', error);
+        });
+    }
   }
 
   render() {
@@ -87,7 +103,7 @@ class TabForm extends React.Component {
             <Label check>
               <Input
                 type="radio"
-                name="tutorials"
+                name="form-radio"
                 value="tutorials"
                 onChange={ this.tabTypeChange }
               />{' '}
@@ -98,7 +114,7 @@ class TabForm extends React.Component {
             <Label check>
               <Input
                 type="radio"
-                name="resources"
+                name="form-radio"
                 value="resources"
                 onClick={ this.tabTypeChange }
               />{' '}
@@ -109,7 +125,7 @@ class TabForm extends React.Component {
             <Label check>
               <Input
                 type="radio"
-                name="blogs"
+                name="form-radio"
                 value="blogs"
                 onClick={ this.tabTypeChange }
               />{' '}
@@ -120,7 +136,7 @@ class TabForm extends React.Component {
             <Label check>
               <Input
                 type="radio"
-                name="podcasts"
+                name="form-radio"
                 value="podcasts"
                 onClick={ this.tabTypeChange }
               />{' '}
