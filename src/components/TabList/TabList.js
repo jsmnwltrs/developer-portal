@@ -23,6 +23,7 @@ class TabList extends Component {
     podcasts: PropTypes.arrayOf(tabDataShape),
     deleteTabItem: PropTypes.func,
     passTabItemToEdit: PropTypes.func,
+    updateSingleIsCompleted: PropTypes.func,
   }
 
   constructor(props) {
@@ -50,6 +51,7 @@ class TabList extends Component {
       resources,
       deleteTabItem,
       passTabItemToEdit,
+      updateSingleIsCompleted,
     } = this.props;
     return (
       <div>
@@ -94,6 +96,7 @@ class TabList extends Component {
               tutorials={tutorials}
               deleteTabItem={deleteTabItem}
               passTabItemToEdit={passTabItemToEdit}
+              updateSingleIsCompleted={updateSingleIsCompleted}
             />
           </TabPane>
           <TabPane tabId="2">
@@ -102,6 +105,7 @@ class TabList extends Component {
               resources={resources}
               deleteTabItem={deleteTabItem}
               passTabItemToEdit={passTabItemToEdit}
+              updateSingleIsCompleted={updateSingleIsCompleted}
             />
           </TabPane>
           <TabPane tabId="3">
@@ -110,6 +114,7 @@ class TabList extends Component {
               blogs={blogs}
               deleteTabItem={deleteTabItem}
               passTabItemToEdit={passTabItemToEdit}
+              updateSingleIsCompleted={updateSingleIsCompleted}
             />
           </TabPane>
           <TabPane tabId="4">
@@ -118,6 +123,7 @@ class TabList extends Component {
               podcasts={podcasts}
               deleteTabItem={deleteTabItem}
               passTabItemToEdit={passTabItemToEdit}
+              updateSingleIsCompleted={updateSingleIsCompleted}
             />
           </TabPane>
         </TabContent>

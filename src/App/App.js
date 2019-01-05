@@ -5,6 +5,7 @@ import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Auth from '../components/Auth/Auth';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
+import GithubProfile from '../components/GithubProfile/GithubProfile';
 import TabList from '../components/TabList/TabList';
 import connection from '../Helpers/data/connection';
 import authRequests from '../Helpers/data/authRequests';
@@ -15,7 +16,7 @@ import TabForm from '../components/Form/Form';
 class App extends Component {
   state = {
     authed: false,
-    github_username: '',
+    githubUsername: '',
     tutorials: [],
     podcasts: [],
     resources: [],
@@ -23,6 +24,9 @@ class App extends Component {
     isEditing: false,
     editId: '-1',
     tabType: '',
+    githubProfileLink: '',
+    githubProfilePic: '',
+    githubCommits: '',
   };
 
   componentDidMount() {
@@ -32,9 +36,21 @@ class App extends Component {
         this.setState({
           authed: true,
         });
-        const githubUser = this.state.github_username;
+        const githubUser = this.state.githubUsername;
         githubApiRequests.getGithubProfile(githubUser)
-          .then(() => {
+          .then((githubData) => {
+            const githubProfileLink = githubData.html_url;
+            const githubCommits = githubData.x;
+            const githubProfilePic = githubData.avatar_url;
+            this.setState({ githubProfileLink, githubCommits, githubProfilePic });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
+        githubApiRequests.getGithubCommits(githubUser)
+          .then((githubCommits) => {
+            this.setState({ githubCommits });
           })
           .catch((error) => {
             console.error(error);
@@ -76,7 +92,7 @@ class App extends Component {
   isAuthenticated = (username) => {
     this.setState({
       authed: true,
-      github_username: username,
+      githubUsername: username,
     });
   }
 
@@ -152,6 +168,32 @@ class App extends Component {
     this.setState({ isEditing: true, editId: tabId, tabType });
   }
 
+  updateSingleIsCompleted= (itemId, isCompleted, tabType) => {
+    const uid = authRequests.getCurrentUid();
+    tabDataRequests.updateItemIsCompleted(itemId, isCompleted, tabType)
+      .then(() => {
+        tabDataRequests.getRequest(uid, tabType)
+          .then((tabItems) => {
+            if (tabType === 'tutorials') {
+              tabItems.sort((x, y) => x.isCompleted - y.isCompleted);
+              this.setState({ tutorials: tabItems });
+            } else if (tabType === 'podcasts') {
+              tabItems.sort((x, y) => x.isCompleted - y.isCompleted);
+              this.setState({ podcasts: tabItems });
+            } else if (tabType === 'blogs') {
+              tabItems.sort((x, y) => x.isCompleted - y.isCompleted);
+              this.setState({ blogs: tabItems });
+            } else if (tabType === 'resources') {
+              tabItems.sort((x, y) => x.isCompleted - y.isCompleted);
+              this.setState({ resources: tabItems });
+            }
+          });
+      })
+      .catch((error) => {
+        console.error('error on updateSingleIsCompleted', error);
+      });
+  }
+
   render() {
     const {
       authed,
@@ -162,11 +204,15 @@ class App extends Component {
       editId,
       isEditing,
       tabType,
+      githubCommits,
+      githubProfileLink,
+      githubProfilePic,
+      githubUsername,
     } = this.state;
 
     const logoutClickEvent = () => {
       authRequests.logoutUser();
-      this.setState({ authed: false, github_username: '' });
+      this.setState({ authed: false, githubUsername: '' });
     };
 
     if (!authed) {
@@ -180,6 +226,12 @@ class App extends Component {
     return (
       <div className="App">
       <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}/>
+      <GithubProfile
+        githubCommits={githubCommits}
+        githubProfileLink={githubProfileLink}
+        githubProfilePic={githubProfilePic}
+        githubUsername={githubUsername}
+      />
       <TabForm
         onSubmit={this.formSubmitEvent}
         isEditing={isEditing}
@@ -193,6 +245,7 @@ class App extends Component {
         resources={resources}
         deleteTabItem={this.deleteTabItem}
         passTabItemToEdit={this.passTabItemToEdit}
+        updateSingleIsCompleted={this.updateSingleIsCompleted}
       />
     </div>
     );

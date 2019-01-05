@@ -9,16 +9,23 @@ class Podcasts extends React.Component {
     podcasts: PropTypes.arrayOf(tabDataShape),
     deleteTabItem: PropTypes.func,
     passTabItemToEdit: PropTypes.func,
+    updateSingleIsCompleted: PropTypes.func,
   }
 
   render() {
-    const { podcasts, deleteTabItem, passTabItemToEdit } = this.props;
+    const {
+      podcasts,
+      deleteTabItem,
+      passTabItemToEdit,
+      updateSingleIsCompleted,
+    } = this.props;
     const podcastsItemComponents = podcasts.map(podcast => (
       <PodcastItem
         podcast={podcast}
         key={podcast.id}
         deleteTabItem={deleteTabItem}
         passTabItemToEdit={passTabItemToEdit}
+        updateSingleIsCompleted={updateSingleIsCompleted}
       />
     ));
     return (
