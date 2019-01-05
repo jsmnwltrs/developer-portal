@@ -38,7 +38,7 @@ class PodcastItem extends React.Component {
   render() {
     const { podcast } = this.props;
     return (
-      <div>
+      <div className="podcast-item">
         <span>{podcast.name}</span>
         <span><a href={podcast.url}>Link</a></span>
         <span className="col">

@@ -91,7 +91,6 @@ class TabList extends Component {
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
-          <h2>Tutorials</h2>
             <Tutorials
               tutorials={tutorials}
               deleteTabItem={deleteTabItem}
@@ -100,7 +99,6 @@ class TabList extends Component {
             />
           </TabPane>
           <TabPane tabId="2">
-          <h2>Resources</h2>
             <Resources
               resources={resources}
               deleteTabItem={deleteTabItem}
@@ -109,7 +107,6 @@ class TabList extends Component {
             />
           </TabPane>
           <TabPane tabId="3">
-          <h2>Blogs</h2>
             <Blogs
               blogs={blogs}
               deleteTabItem={deleteTabItem}
@@ -118,7 +115,6 @@ class TabList extends Component {
             />
           </TabPane>
           <TabPane tabId="4">
-          <h2>Podcasts</h2>
             <Podcasts
               podcasts={podcasts}
               deleteTabItem={deleteTabItem}

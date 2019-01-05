@@ -227,12 +227,16 @@ class App extends Component {
     return (
       <div className="App">
       <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}/>
+      <div className="row mt-5">
+      <div className="col-4 ml-5">
       <GithubProfile
         githubCommits={githubCommits}
         githubProfileLink={githubProfileLink}
         githubProfilePic={githubProfilePic}
         githubUsername={githubUsername}
       />
+      </div>
+      <div className="col-7 ml-5">
       <TabForm
         onSubmit={this.formSubmitEvent}
         isEditing={isEditing}
@@ -248,6 +252,8 @@ class App extends Component {
         passTabItemToEdit={this.passTabItemToEdit}
         updateSingleIsCompleted={this.updateSingleIsCompleted}
       />
+      </div>
+      </div>
     </div>
     );
   }

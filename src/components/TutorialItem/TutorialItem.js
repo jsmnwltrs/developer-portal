@@ -37,7 +37,7 @@ class TutorialItem extends React.Component {
   render() {
     const { tutorial } = this.props;
     return (
-      <div>
+      <div className="tutorial-item">
         <span>{tutorial.name}</span>
         <span><a href={tutorial.url}>Link</a></span>
         <span className="col">

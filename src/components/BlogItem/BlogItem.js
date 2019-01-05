@@ -37,7 +37,7 @@ class BlogItem extends React.Component {
   render() {
     const { blog } = this.props;
     return (
-      <div>
+      <div className="blog-item">
         <span>{blog.name}</span>
         <span><a href={blog.url}>Link</a></span>
         <span className="col">

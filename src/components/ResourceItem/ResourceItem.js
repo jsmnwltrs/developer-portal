@@ -38,7 +38,7 @@ class ResourceItem extends React.Component {
   render() {
     const { resource } = this.props;
     return (
-      <div>
+      <div className="resource-item">
         <span>{resource.name}</span>
         <span><a href={resource.url}>Link</a></span>
         <span className="col">

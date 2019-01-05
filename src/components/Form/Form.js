@@ -84,8 +84,11 @@ class TabForm extends React.Component {
     return (
       <div className="form">
       <Form onSubmit={this.formSubmit}>
+      <div className="row">
+      <div className="col-8">
         <FormGroup>
-          <Label for="name">Name:</Label>
+          <div className="d-flex flex-nowrap">
+          <Label className="name-label" for="name">Name:</Label>
           <Input
             type="text"
             name="form-name"
@@ -94,9 +97,11 @@ class TabForm extends React.Component {
             value={newTabItem.name}
             onChange= {this.nameChange}
           />
+          </div>
         </FormGroup>
         <FormGroup>
-          <Label for="link">Link:</Label>
+          <div className="d-flex flex-nowrap">
+          <Label className="link-label" for="link">Link:</Label>
           <Input
             type="text"
             name="form-link"
@@ -105,7 +110,10 @@ class TabForm extends React.Component {
             value={newTabItem.url}
             onChange= {this.linkChange}
           />
+          </div>
         </FormGroup>
+        </div>
+        <div className="col-2">
         <FormGroup tag="fieldset">
           <FormGroup check>
             <Label check>
@@ -152,7 +160,11 @@ class TabForm extends React.Component {
             </Label>
           </FormGroup>
         </FormGroup>
+        </div>
+        <div className="col-2">
         <Button>Save</Button>
+        </div>
+        </div>
       </Form>
       </div>
     );
