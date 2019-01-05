@@ -20,6 +20,8 @@ const getRequest = (uid, tabType) => new Promise((resolve, reject) => {
     });
 });
 
+const updateItemIsCompleted = (itemId, isCompleted, tabType) => axios.patch(`${firebaseUrl}/${tabType}/${itemId}.json`, { isCompleted });
+
 const postRequest = (tabItem, tabType) => axios.post(`${firebaseUrl}/${tabType}.json`, tabItem);
 
 const deleteRequest = (tabId, tabType) => axios.delete(`${firebaseUrl}/${tabType}/${tabId}.json`);
@@ -34,4 +36,5 @@ export default {
   deleteRequest,
   getSingleTabItem,
   putRequest,
+  updateItemIsCompleted,
 };

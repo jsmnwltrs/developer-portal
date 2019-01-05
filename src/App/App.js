@@ -48,6 +48,14 @@ class App extends Component {
             console.error(error);
           });
 
+        githubApiRequests.getGithubCommits(githubUser)
+          .then((githubCommits) => {
+            this.setState({ githubCommits });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
         const currentUser = authRequests.getCurrentUid();
 
         tabDataRequests.getRequest(currentUser, 'tutorials')
@@ -160,6 +168,32 @@ class App extends Component {
     this.setState({ isEditing: true, editId: tabId, tabType });
   }
 
+  updateSingleIsCompleted= (itemId, isCompleted, tabType) => {
+    const uid = authRequests.getCurrentUid();
+    tabDataRequests.updateItemIsCompleted(itemId, isCompleted, tabType)
+      .then(() => {
+        tabDataRequests.getRequest(uid, tabType)
+          .then((tabItems) => {
+            if (tabType === 'tutorials') {
+              tabItems.sort((x, y) => x.isCompleted - y.isCompleted);
+              this.setState({ tutorials: tabItems });
+            } else if (tabType === 'podcasts') {
+              tabItems.sort((x, y) => x.isCompleted - y.isCompleted);
+              this.setState({ podcasts: tabItems });
+            } else if (tabType === 'blogs') {
+              tabItems.sort((x, y) => x.isCompleted - y.isCompleted);
+              this.setState({ blogs: tabItems });
+            } else if (tabType === 'resources') {
+              tabItems.sort((x, y) => x.isCompleted - y.isCompleted);
+              this.setState({ resources: tabItems });
+            }
+          });
+      })
+      .catch((error) => {
+        console.error('error on updateSingleIsCompleted', error);
+      });
+  }
+
   render() {
     const {
       authed,
@@ -211,6 +245,7 @@ class App extends Component {
         resources={resources}
         deleteTabItem={this.deleteTabItem}
         passTabItemToEdit={this.passTabItemToEdit}
+        updateSingleIsCompleted={this.updateSingleIsCompleted}
       />
     </div>
     );

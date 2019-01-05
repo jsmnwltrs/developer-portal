@@ -2,21 +2,25 @@
   "blog0": {
     "name": "David Walsh",
     "url": "https://davidwalsh.name",
-    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2",
+    "isCompleted": false
   },
   "blog1": {
     "name": "sitepoint",
     "url": "https://www.sitepoint.com/javascript/",
-    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2",
+    "isCompleted": false
   },
   "blog2": {
     "name": "javascript playground",
     "url": "https://javascriptplayground.com/",
-    "uid": "123"
+    "uid": "123",
+    "isCompleted": false
   },
   "blog3": {
     "name": "superhero js",
     "url": "http://superherojs.com/",
-    "uid": "123"
+    "uid": "123",
+    "isCompleted": false
   }
 }

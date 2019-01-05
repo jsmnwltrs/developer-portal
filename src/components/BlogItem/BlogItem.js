@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  FormGroup,
+  Label,
+  Input,
+} from 'reactstrap';
 import tabDataShape from '../../Helpers/props/tabDataShape';
 import './BlogItem.scss';
 
@@ -8,6 +13,7 @@ class BlogItem extends React.Component {
     blog: tabDataShape,
     deleteTabItem: PropTypes.func,
     passTabItemToEdit: PropTypes.func,
+    updateSingleIsCompleted: PropTypes.func,
   }
 
   deleteEvent = (e) => {
@@ -22,6 +28,12 @@ class BlogItem extends React.Component {
     passTabItemToEdit(blog.id, 'blogs');
   }
 
+  updateIsCompleted = (e) => {
+    const { blog, updateSingleIsCompleted } = this.props;
+    const isCompleted = e.target.checked;
+    updateSingleIsCompleted(blog.id, isCompleted, 'blogs');
+  }
+
   render() {
     const { blog } = this.props;
     return (
@@ -33,6 +45,14 @@ class BlogItem extends React.Component {
         </span>
         <span className="col">
           <button className="btn btn-dark" onClick={this.deleteEvent}><i className="far fa-trash-alt"/></button>
+        </span>
+        <span className="col">
+          <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" checked={blog.isCompleted} onChange={this.updateIsCompleted}/>{' '}
+                Done
+                </Label>
+          </FormGroup>
         </span>
       </div>
     );

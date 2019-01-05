@@ -9,16 +9,23 @@ class Turtorials extends React.Component {
     tutorials: PropTypes.arrayOf(tabDataShape),
     deleteTabItem: PropTypes.func,
     passTabItemToEdit: PropTypes.func,
+    updateSingleIsCompleted: PropTypes.func,
   }
 
   render() {
-    const { tutorials, deleteTabItem, passTabItemToEdit } = this.props;
+    const {
+      tutorials,
+      deleteTabItem,
+      passTabItemToEdit,
+      updateSingleIsCompleted,
+    } = this.props;
     const tutorialsItemComponents = tutorials.map(tutorial => (
       <TutorialItem
         tutorial={tutorial}
         key={tutorial.id}
         deleteTabItem={deleteTabItem}
         passTabItemToEdit={passTabItemToEdit}
+        updateSingleIsCompleted={updateSingleIsCompleted}
       />
     ));
     return (

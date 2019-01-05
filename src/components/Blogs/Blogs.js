@@ -9,16 +9,23 @@ class Blogs extends React.Component {
     blogs: PropTypes.arrayOf(tabDataShape),
     deleteTabItem: PropTypes.func,
     passTabItemToEdit: PropTypes.func,
+    updateSingleIsCompleted: PropTypes.func,
   }
 
   render() {
-    const { blogs, deleteTabItem, passTabItemToEdit } = this.props;
+    const {
+      blogs,
+      deleteTabItem,
+      passTabItemToEdit,
+      updateSingleIsCompleted,
+    } = this.props;
     const blogsItemComponents = blogs.map(blog => (
       <BlogItem
         blog={blog}
         key={blog.id}
         deleteTabItem={deleteTabItem}
         passTabItemToEdit={passTabItemToEdit}
+        updateSingleIsCompleted={updateSingleIsCompleted}
       />
     ));
     return (

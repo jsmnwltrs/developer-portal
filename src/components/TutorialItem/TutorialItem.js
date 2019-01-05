@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  FormGroup,
+  Label,
+  Input,
+} from 'reactstrap';
 import tabDataShape from '../../Helpers/props/tabDataShape';
 import './TutorialItem.scss';
 
@@ -8,6 +13,7 @@ class TutorialItem extends React.Component {
     tutorial: tabDataShape,
     deleteTabItem: PropTypes.func,
     passTabItemToEdit: PropTypes.func,
+    updateSingleIsCompleted: PropTypes.func,
   }
 
   deleteEvent = (e) => {
@@ -22,6 +28,11 @@ class TutorialItem extends React.Component {
     passTabItemToEdit(tutorial.id, 'tutorials');
   }
 
+  updateIsCompleted = (e) => {
+    const { tutorial, updateSingleIsCompleted } = this.props;
+    const isCompleted = e.target.checked;
+    updateSingleIsCompleted(tutorial.id, isCompleted, 'tutorials');
+  }
 
   render() {
     const { tutorial } = this.props;
@@ -34,6 +45,14 @@ class TutorialItem extends React.Component {
         </span>
         <span className="col">
           <button className="btn btn-dark" onClick={this.deleteEvent}><i className="far fa-trash-alt"/></button>
+        </span>
+        <span className="col">
+        <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" checked={tutorial.isCompleted} onChange={this.updateIsCompleted}/>{' '}
+                Done
+                </Label>
+          </FormGroup>
         </span>
       </div>
     );

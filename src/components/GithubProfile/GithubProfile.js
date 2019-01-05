@@ -21,7 +21,7 @@ class GithubProfile extends React.Component {
         <img src={githubProfilePic} alt="github profile pic"/>
         <h4>{githubUsername}</h4>
         <p>{githubProfileLink}</p>
-        <p>{githubCommits}</p>
+        <p>{githubCommits} recent Github Commits</p>
       </div>
     );
   }

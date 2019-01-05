@@ -2,21 +2,25 @@
   "tutorial0": {
     "name": "Unity Scripting",
     "url": "https://unity3d.com/learn/tutorials/s/scripting",
-    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2",
+    "isCompleted": false
   },
   "tutorial1": {
     "name": "Webpack",
     "url": "https://scotch.io/tag/webpack",
-    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2"
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2",
+    "isCompleted": false
   },
   "tutorial2": {
     "name": "Web Design",
     "url": "https://www.mockplus.com/blog/post/web-design-and-development-tutorials",
-    "uid": "123"
+    "uid": "123",
+    "isCompleted": false
   },
   "tutorial3": {
     "name": "Python",
     "url": "https://www.w3schools.com/python/",
-    "uid": "123"
+    "uid": "123",
+    "isCompleted": false
   }
 }

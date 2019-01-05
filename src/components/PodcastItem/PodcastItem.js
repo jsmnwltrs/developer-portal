@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  FormGroup,
+  Label,
+  Input,
+} from 'reactstrap';
 import tabDataShape from '../../Helpers/props/tabDataShape';
 import './PodcastItem.scss';
 
@@ -8,6 +13,7 @@ class PodcastItem extends React.Component {
     podcast: tabDataShape,
     deleteTabItem: PropTypes.func,
     passTabItemToEdit: PropTypes.func,
+    updateSingleIsCompleted: PropTypes.func,
   }
 
   deleteEvent = (e) => {
@@ -22,6 +28,12 @@ class PodcastItem extends React.Component {
     passTabItemToEdit(podcast.id, 'podcasts');
   }
 
+  updateIsCompleted = (e) => {
+    const { podcast, updateSingleIsCompleted } = this.props;
+    const isCompleted = e.target.checked;
+    updateSingleIsCompleted(podcast.id, isCompleted, 'podcasts');
+  }
+
 
   render() {
     const { podcast } = this.props;
@@ -34,6 +46,14 @@ class PodcastItem extends React.Component {
         </span>
         <span className="col">
           <button className="btn btn-dark" onClick={this.deleteEvent}><i className="far fa-trash-alt"/></button>
+        </span>
+        <span className="col">
+        <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" checked={podcast.isCompleted} onChange={this.updateIsCompleted}/>{' '}
+                Done
+                </Label>
+          </FormGroup>
         </span>
       </div>
     );
