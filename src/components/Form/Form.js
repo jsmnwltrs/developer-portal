@@ -50,12 +50,20 @@ class TabForm extends React.Component {
 
   formSubmit = (e) => {
     e.preventDefault();
-    const { onSubmit } = this.props;
-    const { tabType } = this.state;
-    const myTabItem = { ...this.state.newTabItem };
-    myTabItem.uid = authRequests.getCurrentUid();
-    onSubmit(myTabItem, tabType);
-    this.setState({ newTabItem: defaultTabItem, tabType: '' });
+    const { onSubmit, isEditing } = this.props;
+    if (isEditing) {
+      const { tabType } = this.props;
+      const myTabItem = { ...this.state.newTabItem };
+      myTabItem.uid = authRequests.getCurrentUid();
+      onSubmit(myTabItem, tabType);
+      this.setState({ newTabItem: defaultTabItem, tabType: '' });
+    } else {
+      const { tabType } = this.state;
+      const myTabItem = { ...this.state.newTabItem };
+      myTabItem.uid = authRequests.getCurrentUid();
+      onSubmit(myTabItem, tabType);
+      this.setState({ newTabItem: defaultTabItem, tabType: '' });
+    }
   }
 
   componentDidUpdate(prevProps) {

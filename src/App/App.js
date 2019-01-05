@@ -136,6 +136,7 @@ class App extends Component {
                 this.setState({ resources: tabItems });
               }
             });
+          this.setState({ isEditing: false, editId: -1 });
         })
         .catch((error) => {
           console.error('error on formSubmitEvent', error);
