@@ -1,5 +1,5 @@
 # Developer-Portal
-This project was an introduction to creating a one page application with React. A user can login with a Github profile and create, update and delete useful links and organize them into 4 separate tabs. Some of the user's github information also displays.
+This project was an introduction to creating a one page application with React. A user can login with their Github profile and create, update and delete items to store useful links and organize them into 4 separate tabs. Some of the user's github information also displays.
 
 
 ### How to run this app
