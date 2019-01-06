@@ -37,16 +37,16 @@ class TutorialItem extends React.Component {
   render() {
     const { tutorial } = this.props;
     return (
-      <div className="tutorial-item">
-        <span>{tutorial.name}</span>
-        <span><a href={tutorial.url}>Link</a></span>
-        <span className="col">
+      <div className="tutorial-item row">
+        <span className="col-4">{tutorial.name}</span>
+        <span className="col-4"><a href={tutorial.url}>Link</a></span>
+        <span className="col-1">
           <button className="btn btn-dark" onClick={this.editEvent}><i className="far fa-edit"/></button>
         </span>
-        <span className="col">
+        <span className="col-1">
           <button className="btn btn-dark" onClick={this.deleteEvent}><i className="far fa-trash-alt"/></button>
         </span>
-        <span className="col">
+        <span className="col-2">
         <FormGroup check>
                 <Label check>
                   <Input type="checkbox" checked={tutorial.isCompleted} onChange={this.updateIsCompleted}/>{' '}

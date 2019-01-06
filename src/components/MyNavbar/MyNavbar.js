@@ -24,7 +24,7 @@ class MyNavbar extends React.Component {
   render() {
     const { isAuthed, logoutClickEvent } = this.props;
     return (
-      <div className="my-navbar">
+      <div className="my-navbar sticky-top">
         <Navbar color="dark" dark expand="md">
           <NavbarBrand href="/">Developer Portal</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />

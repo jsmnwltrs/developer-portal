@@ -54,9 +54,9 @@ class TabList extends Component {
       updateSingleIsCompleted,
     } = this.props;
     return (
-      <div>
+      <div className="tabs mt-3 p-4">
         <Nav tabs>
-          <NavItem>
+          <NavItem className="navItem">
             <NavLink
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
@@ -64,7 +64,7 @@ class TabList extends Component {
               Tutorials
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="navItem">
             <NavLink
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }}
@@ -72,7 +72,7 @@ class TabList extends Component {
               Resources
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="navItem">
             <NavLink
               className={classnames({ active: this.state.activeTab === '3' })}
               onClick={() => { this.toggle('3'); }}
@@ -80,7 +80,7 @@ class TabList extends Component {
               Blogs
             </NavLink>
           </NavItem>
-          <NavItem>
+          <NavItem className="navItem">
             <NavLink
               className={classnames({ active: this.state.activeTab === '4' })}
               onClick={() => { this.toggle('4'); }}

@@ -8,13 +8,13 @@
   "tutorial1": {
     "name": "Webpack",
     "url": "https://scotch.io/tag/webpack",
-    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2",
+    "uid": "123",
     "isCompleted": false
   },
   "tutorial2": {
     "name": "Web Design",
     "url": "https://www.mockplus.com/blog/post/web-design-and-development-tutorials",
-    "uid": "123",
+    "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2",
     "isCompleted": false
   },
   "tutorial3": {

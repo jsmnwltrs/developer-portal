@@ -29,7 +29,7 @@ class Blogs extends React.Component {
       />
     ));
     return (
-      <div className="blogs">
+      <div className="blogs mt-4">
         <ul>{blogsItemComponents}</ul>
       </div>
     );

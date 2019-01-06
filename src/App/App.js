@@ -227,7 +227,7 @@ class App extends Component {
     return (
       <div className="App">
       <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}/>
-      <div className="row mt-5">
+      <div className="row mt-4">
       <div className="col-4 ml-5">
       <GithubProfile
         githubCommits={githubCommits}

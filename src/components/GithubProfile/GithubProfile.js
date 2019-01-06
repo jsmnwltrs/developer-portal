@@ -1,4 +1,5 @@
 import React from 'react';
+import './GithubProfile.scss';
 import PropTypes from 'prop-types';
 
 class GithubProfile extends React.Component {
@@ -17,11 +18,12 @@ class GithubProfile extends React.Component {
       githubUsername,
     } = this.props;
     return (
-      <div>
-        <img src={githubProfilePic} alt="github profile pic"/>
-        <h4>{githubUsername}</h4>
-        <p>{githubProfileLink}</p>
-        <p>{githubCommits} recent Github Commits</p>
+      <div className="profile p-4">
+        <img className="profileImage mb-2" src={githubProfilePic} alt="github profile pic"/>
+        <h3 className="mb-2">{githubUsername}</h3>
+        <a href={githubProfileLink}>Github Profile Link</a>
+        <h3 className="mt-2">{githubCommits} Commits</h3>
+        <h5>in the last 5 days</h5>
       </div>
     );
   }

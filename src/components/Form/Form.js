@@ -82,7 +82,7 @@ class TabForm extends React.Component {
   render() {
     const { newTabItem } = this.state;
     return (
-      <div className="form">
+      <div className="form p-4">
       <Form onSubmit={this.formSubmit}>
       <div className="row">
       <div className="col-8">
@@ -162,7 +162,7 @@ class TabForm extends React.Component {
         </FormGroup>
         </div>
         <div className="col-2">
-        <Button>Save</Button>
+        <Button className="btn btn-dark">Save</Button>
         </div>
         </div>
       </Form>

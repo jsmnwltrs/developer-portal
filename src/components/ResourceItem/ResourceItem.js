@@ -38,16 +38,16 @@ class ResourceItem extends React.Component {
   render() {
     const { resource } = this.props;
     return (
-      <div className="resource-item">
-        <span>{resource.name}</span>
-        <span><a href={resource.url}>Link</a></span>
-        <span className="col">
+      <div className="resource-item row">
+        <span className="col-4">{resource.name}</span>
+        <span className="col-4"><a href={resource.url}>Link</a></span>
+        <span className="col-1">
           <button className="btn btn-dark" onClick={this.editEvent}><i className="far fa-edit"/></button>
         </span>
-        <span className="col">
+        <span className="col-1">
           <button className="btn btn-dark" onClick={this.deleteEvent}><i className="far fa-trash-alt"/></button>
         </span>
-        <span className="col">
+        <span className="col-2">
           <FormGroup check>
                 <Label check>
                   <Input type="checkbox" checked={resource.isCompleted} onChange={this.updateIsCompleted}/>{' '}
