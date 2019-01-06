@@ -38,16 +38,16 @@ class PodcastItem extends React.Component {
   render() {
     const { podcast } = this.props;
     return (
-      <div>
-        <span>{podcast.name}</span>
-        <span><a href={podcast.url}>Link</a></span>
-        <span className="col">
+      <div className="podcast-item row">
+        <span className="col-4">{podcast.name}</span>
+        <span className="col-4"><a href={podcast.url}>Link</a></span>
+        <span className="col-1">
           <button className="btn btn-dark" onClick={this.editEvent}><i className="far fa-edit"/></button>
         </span>
-        <span className="col">
+        <span className="col-1">
           <button className="btn btn-dark" onClick={this.deleteEvent}><i className="far fa-trash-alt"/></button>
         </span>
-        <span className="col">
+        <span className="col-2">
         <FormGroup check>
                 <Label check>
                   <Input type="checkbox" checked={podcast.isCompleted} onChange={this.updateIsCompleted}/>{' '}

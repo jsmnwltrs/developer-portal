@@ -1,0 +1,5 @@
+@import '../../Helpers/styling/variables';
+
+.resource-item {
+  @include tabItem;
+}

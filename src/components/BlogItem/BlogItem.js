@@ -37,16 +37,16 @@ class BlogItem extends React.Component {
   render() {
     const { blog } = this.props;
     return (
-      <div>
-        <span>{blog.name}</span>
-        <span><a href={blog.url}>Link</a></span>
-        <span className="col">
+      <div className="blog-item row">
+        <span className="col-4">{blog.name}</span>
+        <span className="col-4"><a href={blog.url}>Link</a></span>
+        <span className="col-1">
           <button className="btn btn-dark" onClick={this.editEvent}><i className="far fa-edit"/></button>
         </span>
-        <span className="col">
+        <span className="col-1">
           <button className="btn btn-dark" onClick={this.deleteEvent}><i className="far fa-trash-alt"/></button>
         </span>
-        <span className="col">
+        <span className="col-2">
           <FormGroup check>
                 <Label check>
                   <Input type="checkbox" checked={blog.isCompleted} onChange={this.updateIsCompleted}/>{' '}

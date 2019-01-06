@@ -1,0 +1,5 @@
+@import '../../Helpers/styling/variables';
+
+.tutorial-item {
+  @include tabItem;
+}

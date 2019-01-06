@@ -29,7 +29,7 @@ class Turtorials extends React.Component {
       />
     ));
     return (
-      <div className="tutorials">
+      <div className="tutorials mt-4">
         <ul>{tutorialsItemComponents}</ul>
       </div>
     );

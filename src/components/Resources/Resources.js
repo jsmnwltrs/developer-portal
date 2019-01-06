@@ -29,7 +29,7 @@ class Resources extends React.Component {
       />
     ));
     return (
-      <div className="resources">
+      <div className="resources mt-4">
         <ul>{resourcesItemComponents}</ul>
       </div>
     );

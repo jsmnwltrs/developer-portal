@@ -29,7 +29,7 @@ class Podcasts extends React.Component {
       />
     ));
     return (
-      <div className="podcasts">
+      <div className="podcasts mt-4">
         <ul>{podcastsItemComponents}</ul>
       </div>
     );

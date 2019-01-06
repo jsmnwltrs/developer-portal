@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../Helpers/styling/logo.png';
 import './Auth.scss';
 import authRequests from '../../Helpers/data/authRequests';
 
@@ -13,8 +14,8 @@ class Auth extends React.Component {
 
   render() {
     return (
-      <div className="Auth">
-        <button className="btn btn-danger" onClick={this.authenticateUser}>Login</button>
+      <div className="Auth mt-4">
+        <button className="btn btn-light" onClick={this.authenticateUser}>Login with Github  <img className="githubLogo" alt="logo" src={logo}/></button>
       </div>
     );
   }

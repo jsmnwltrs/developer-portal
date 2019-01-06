@@ -1,12 +1,12 @@
 {
   "resource0": {
-    "name": "webpack",
+    "name": "Webpack",
     "url": "https://webpack.js.org/",
     "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2",
     "isCompleted": false
   },
   "resource1": {
-    "name": "reactstrap",
+    "name": "Reactstrap",
     "url": "https://reactstrap.github.io/",
     "uid": "ib40Hfrr2WUxn9dN8E7peII1U2s2",
     "isCompleted": false
