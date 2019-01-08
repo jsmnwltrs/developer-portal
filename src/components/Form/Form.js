@@ -15,6 +15,7 @@ const defaultTabItem = {
   name: '',
   url: '',
   uid: '',
+  isCompleted: false,
 };
 
 class TabForm extends React.Component {
@@ -27,7 +28,7 @@ class TabForm extends React.Component {
 
   state = {
     newTabItem: defaultTabItem,
-    tabType: '',
+    tabType: false,
   }
 
   formFieldStringState = (name, e) => {
@@ -56,13 +57,13 @@ class TabForm extends React.Component {
       const myTabItem = { ...this.state.newTabItem };
       myTabItem.uid = authRequests.getCurrentUid();
       onSubmit(myTabItem, tabType);
-      this.setState({ newTabItem: defaultTabItem, tabType: '' });
+      this.setState({ newTabItem: defaultTabItem, tabType: false });
     } else {
       const { tabType } = this.state;
       const myTabItem = { ...this.state.newTabItem };
       myTabItem.uid = authRequests.getCurrentUid();
       onSubmit(myTabItem, tabType);
-      this.setState({ newTabItem: defaultTabItem, tabType: '' });
+      this.setState({ newTabItem: defaultTabItem, tabType: false });
     }
   }
 
@@ -80,7 +81,7 @@ class TabForm extends React.Component {
   }
 
   render() {
-    const { newTabItem } = this.state;
+    const { newTabItem, tabType } = this.state;
     return (
       <div className="form p-4">
       <Form onSubmit={this.formSubmit}>
@@ -120,6 +121,7 @@ class TabForm extends React.Component {
               <Input
                 type="radio"
                 name="form-radio"
+                checked={ tabType === 'tutorials' }
                 value="tutorials"
                 onChange={ this.tabTypeChange }
               />{' '}
