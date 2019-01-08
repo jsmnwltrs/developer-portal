@@ -26,7 +26,7 @@ class App extends Component {
     tabType: '',
     githubProfileLink: '',
     githubProfilePic: '',
-    githubCommits: '',
+    githubCommits: 0,
   };
 
   componentDidMount() {
